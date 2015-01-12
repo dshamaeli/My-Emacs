@@ -10,7 +10,7 @@
 ;;;Environment
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setenv "PATH" (concat "/usr/local/bin:/opt/local/bin:/usr/bin:/bin" (getenv "PATH")))
+(setenv "PATH" (concat "/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/home/daniel/.nvm/v0.10.34/bin/node" (getenv "PATH")))
 (require 'cl)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -64,8 +64,6 @@
                           smex
                           sml-mode
                           solarized-theme
-			  tern
-			  tern-auto-complete	
                           web-mode
                           writegood-mode
                           yaml-mode
@@ -142,8 +140,33 @@
 ;;;Language Hooks
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(setq js2-highlight-level 3)
+;;;JS-mode
+
+;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+;(setq js2-highlight-level 3)
+(add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+
+;;;Webmode
+
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+(setq web-mode-markup-indent-offset 2)
+(setq web-mode-css-indent-offset 2)
+(setq web-mode-enable-auto-pairing t)
+(setq web-mode-enable-css-colorization t)
+
+;;;Tern
+
+(add-to-list 'load-path "~/.emacs.d/tern/emacs/")
+(autoload 'tern-mode "tern.el" nil t)
+(add-hook 'js3-mode-hook (lambda () (tern-mode t)))
+(add-hook 'js3-mode-hook (lambda () (auto-complete-mode t)))
+(add-hook 'js3-mode-hook (lambda () (flyspell-mode t)))
+(eval-after-load 'tern
+  '(progn
+     (require 'tern-auto-complete)
+     (tern-ac-setup)))
+(ac-flyspell-workaround)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
