@@ -117,10 +117,15 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; yasnippet
 ;;; should be loaded before auto complete so that they can work together
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (require 'yasnippet)
-(yas-global-mode 1)
+(yas-global-mode t)
+;; Remove Yasnippet's default tab key binding
+(define-key yas-minor-mode-map (kbd "<tab>") nil)
+(define-key yas-minor-mode-map (kbd "TAB") nil)
+;; Set Yasnippet's key binding to shift+tab
+(define-key yas-minor-mode-map (kbd "<backtab>") 'yas-expand)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;auto-complete
@@ -133,6 +138,7 @@
 ;;; set the trigger key so that it can work together with yasnippet on tab key,
 ;;; if the word exists in yasnippet, pressing tab will cause yasnippet to
 ;;; activate, otherwise, auto-complete will
+(global-auto-complete-mode t)
 (ac-set-trigger-key "TAB")
 (ac-set-trigger-key "<tab>")
 
@@ -142,9 +148,9 @@
 
 ;;;JS-mode
 
-;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-;(setq js2-highlight-level 3)
-(add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(setq js2-highlight-level 3)
+;(add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
 
 ;;;Webmode
 
@@ -159,9 +165,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/tern/emacs/")
 (autoload 'tern-mode "tern.el" nil t)
-(add-hook 'js3-mode-hook (lambda () (tern-mode t)))
-(add-hook 'js3-mode-hook (lambda () (auto-complete-mode t)))
-(add-hook 'js3-mode-hook (lambda () (flyspell-mode t)))
+(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
+(add-hook 'js2-mode-hook (lambda () (auto-complete-mode t)))
+(add-hook 'js2-mode-hook (lambda () (flyspell-mode t)))
 (eval-after-load 'tern
   '(progn
      (require 'tern-auto-complete)
