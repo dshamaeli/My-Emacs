@@ -148,9 +148,9 @@
 
 ;;;JS-mode
 
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(setq js2-highlight-level 3)
-;(add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+;(setq js2-highlight-level 3)
+(add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
 
 ;;;Webmode
 
@@ -166,9 +166,9 @@
 (add-to-list 'load-path "~/.emacs.d/tern/emacs/")
 (autoload 'tern-mode "tern.el" nil t)
 
-(add-hook 'js2-mode-hook (lambda () (tern-mode t)))
-(add-hook 'js2-mode-hook (lambda () (auto-complete-mode t)))
-(add-hook 'js2-mode-hook (lambda () (flyspell-mode t)))
+(add-hook 'js3-mode-hook (lambda () (tern-mode t)))
+(add-hook 'js3-mode-hook (lambda () (auto-complete-mode t)))
+(add-hook 'js3-mode-hook (lambda () (flyspell-mode t)))
 (eval-after-load 'tern
   '(progn
      (require 'tern-auto-complete)
