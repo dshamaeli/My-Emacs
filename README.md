@@ -2,15 +2,15 @@ Sorry If I write this in English (which is not good enough), But it seems google
 
 preface:
   
-If you want to use Emacs to edit your JavaScript files there are some packages which could make it more powerful. I will make a linux installation file for it no day, but since then you have to do the labor yourself. However even God didnt give Noah a ship for free!!.
+If you want to use Emacs to edit your JavaScript files there are some packages which could make it more powerful. I will make a linux installation file for it one day, but since then you have to do the labor yourself. However even God didnt give Noah a ship for free!!.
 
 Installation for Ubuntu 14.04:
 
-note: you need to have git,node(0.10.35),npm( and of course Emacs24 ( I use 24.4.1) installed.
+Requirements: you should have git,node(0.10.35),npm and of course Emacs24 ( I use version 24.4.1) installed.
 
-step 1: if there is a ~/.emacs file in your home directory you should remove it
+step 1: if there is a ~/.emacs file in your home directory you should remove it so emacs use ~/.emacs.d/init.el for initiation.
 
-step 2:	first clone My-Emacs repository to your computer:
+step 2:	first clone this repository to your computer:
 
 	$ git clone https://github.com/dshamaeli/My-Emacs.git ~/.emacs.d
 
@@ -27,7 +27,7 @@ to set tern auto complete key map to CTRL-TAB add this line to keymap section in
 	
 		(define-key tern-mode-keymap [(control tab)] 'completion-at-point)
 		  
-you have to do this manually until Mr Marijn Haverbeke answers my pull request in github
+you have to do this manually until Mr Marijn Haverbeke (Geat man and Author of Eloquent JavaScript and tern) answers my pull request in github
 	
 
 cautionary Step: Make sure that node is added to your path or tern package wont work 
