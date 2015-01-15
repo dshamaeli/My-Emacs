@@ -38,8 +38,8 @@ Step 4: By default Yasnippet dosent work with JS3-mode but we can simply fix it 
 	$ cd snippets/
 	$ cp -r js2-mode/ js3-mode
 
-Step 4: Now Start Emacs. It will load packages automatically. You could use "emacs --debug-init" if you get any error.
-	remember that with our shity internet speed in Iran this could take few minutes
+Step 4: Now Start Emacs. It will load packages automatically. You could use "emacs --debug-init" if you get any error.remember that with our shity internet speed in Iran this could take few minutes
+
 	$ emacs
 
 step 5: to test it open a new .js file with your emacs:
