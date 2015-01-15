@@ -1,7 +1,4 @@
-Sorry If I write this in English (which is not good enough), But it seems google groups text editor has some problem with bilingual (Persian and English) sentences and miss places some words. I also needed a README for my github,so why dont kill two birds with one stone?
 
-preface:
-  
 If you want to use Emacs to edit your JavaScript files there are some packages which could make it more powerful. I will make a linux installation file for it one day, but since then you have to do the labor yourself. However even God didnt give Noah a ship for free!!.
 
 Installation for Ubuntu 14.04:
