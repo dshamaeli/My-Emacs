@@ -19,15 +19,15 @@ Step 3: now Install ternjs the dependencies:
 	$ cd ~/.emacs.d/tern
 	$ npm install
 
-	for more information about tern goto http://ternjs.net/doc/manual.html#emacs
-	If you want the latest tern version remove /tern and clone directly from tern website but you have to do an extra step:
+for more information about tern goto http://ternjs.net/doc/manual.html#emacs
+If you want the latest tern version remove /tern and clone directly from tern website but you have to do an extra step:
 	
 Extra step:	do this step only if you have cloned tern from ternjs.net 
-		to set tern auto complete key map to CTRL-TAB add this line to keymap section in ~/.emacs.d/tern/emacs/tern.el
+to set tern auto complete key map to CTRL-TAB add this line to keymap section in ~/.emacs.d/tern/emacs/tern.el
 	
 		(define-key tern-mode-keymap [(control tab)] 'completion-at-point)
 		  
-		you have to do this manually until Mr Marijn Haverbeke answers my pull request in github
+you have to do this manually until Mr Marijn Haverbeke answers my pull request in github
 	
 
 cautionary Step: Make sure that node is added to your path or tern package wont work 
@@ -54,10 +54,10 @@ step 5: to test it open a new .js file with your emacs:
 
 Further reading:
 
-	I have learned a lot about Emacs configuration from http://www.aaronbedra.com/emacs.d/
-	Also Read more abut tern at http://ternjs.net
+I have learned a lot about Emacs configuration from http://www.aaronbedra.com/emacs.d/
+Also Read more abut tern at http://ternjs.net
 
-	Thank you for your time
-	May the force be with you	
+Thank you for your time
+May the force be with you	
  
 
