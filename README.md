@@ -1,4 +1,3 @@
-
 If you want to use Emacs to edit your JavaScript files there are some packages which could make it more powerful. I will make a linux installation file for it one day, but since then you have to do the labor yourself. However even God didnt give Noah a ship for free!!.
 
 Installation for Ubuntu 14.04:
