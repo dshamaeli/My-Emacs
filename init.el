@@ -10,7 +10,7 @@
 ;;;Environment
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(setenv "PATH" (concat "/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/home/daniel/.nvm/v0.10.34/bin/node" (getenv "PATH")))
+(setenv "PATH" (concat "/usr/local/bin:/opt/local/bin:/usr/bin:/bin:/usr/bin/node:" (getenv "PATH")))
 (require 'cl)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -163,6 +163,7 @@
 
 ;;;Tern
 
+
 (add-to-list 'load-path "~/.emacs.d/tern/emacs/")
 (autoload 'tern-mode "tern.el" nil t)
 
@@ -173,6 +174,8 @@
   '(progn
      (require 'tern-auto-complete)
      (tern-ac-setup)))
+;;; add this key-map to /tern/emacs/tern.el
+;;;(define-key tern-mode-keymap [(control tab)] 'completion-at-point)
 (ac-flyspell-workaround)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

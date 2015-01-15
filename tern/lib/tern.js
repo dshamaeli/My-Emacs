@@ -25,7 +25,8 @@
     plugins: {},
     fetchTimeout: 1000,
     dependencyBudget: 20000,
-    reuseInstances: true
+    reuseInstances: true,
+    stripCRs: false
   };
 
   var queryTypes = {
@@ -73,9 +74,9 @@
   File.prototype.asLineChar = function(pos) { return asLineChar(this, pos); };
 
   function updateText(file, text, srv) {
-    file.text = text;
+    file.text = srv.options.stripCRs ? text.replace(/\r\n/g, "\n") : text;
     infer.withContext(srv.cx, function() {
-      file.ast = infer.parse(text, srv.passes, {directSourceFile: file, allowReturnOutsideFunction: true});
+      file.ast = infer.parse(file.text, srv.passes, {directSourceFile: file, allowReturnOutsideFunction: true});
     });
     file.lineOffsets = null;
   }
@@ -989,5 +990,5 @@
     return {files: srv.files.map(function(f){return f.name;})};
   }
 
-  exports.version = "0.7.1";
+  exports.version = "0.8.1";
 });
