@@ -35,6 +35,7 @@ Step 4: By default Yasnippet dosent work with JS3-mode but we can simply fix it 
 	$ cp -r js2-mode/ js3-mode
 
 Step 5: In you project directory Create .tern-project file with format like this:
+
 	{
 	  "libs": [
 	    "browser",
@@ -45,6 +46,7 @@ Step 5: In you project directory Create .tern-project file with format like this
 	    "angular": {}
 	  }
 	}
+
 not:see http://ternjs.net/doc/manual.html#configuration for more info
 
 Step 6: Now Start Emacs. It will load packages automatically. You could use "emacs --debug-init" if you get any error.remember that with our shity internet speed in Iran this could take few minutes
