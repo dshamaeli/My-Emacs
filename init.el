@@ -169,6 +169,7 @@
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-enable-auto-pairing t)
 (setq web-mode-enable-css-colorization t)
+(add-hook 'web-mode-hook (lambda () (flyspell-mode t)))
 
 ;;;Tern
 
