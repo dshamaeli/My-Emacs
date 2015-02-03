@@ -2,7 +2,7 @@ If you want to use Emacs to edit your JavaScript files there are some packages w
 
 Installation for Ubuntu 14.04:
 
-Requirements: you should have git,node(0.10.35),npm and of course Emacs24 ( I use version 24.4.1) installed.
+Requirements: you should have git,node(0.10.35),tern (should have been installed at "/usr/bin/tern" or you have to configure it manually. more info at http://ternjs.net/doc/manual.html#emacs) and of course Emacs24 ( I use version 24.4.1) installed.
 
 step 1: if there is a ~/.emacs file in your home directory you should remove it so emacs use ~/.emacs.d/init.el for initiation.
 
@@ -28,13 +28,9 @@ you have to do this manually until Mr Marijn Haverbeke (Geat man and Author of E
 
 cautionary Step: Make sure that node is added to your path or tern package wont work 
 
-Step 4: By default Yasnippet dosent work with JS3-mode but we can simply fix it by:
 
-	$ cd ~/.emacs.d/elpa/yasnippet-     #use tab for auto compelete
-	$ cd snippets/
-	$ cp -r js2-mode/ js3-mode
 
-Step 5: In you project directory Create .tern-project file with format like this:
+Step 4: In you project directory Create .tern-project file with format like this:
 
 	{
 	  "libs": [
@@ -49,11 +45,17 @@ Step 5: In you project directory Create .tern-project file with format like this
 
 not:see http://ternjs.net/doc/manual.html#configuration for more info
 
-Step 6: Now Start Emacs. It will load packages automatically. You could use "emacs --debug-init" if you get any error.remember that with our shity internet speed in Iran this could take few minutes
+Step 5: Now Start Emacs. It will load packages automatically. You could use "emacs --debug-init" if you get any error.
 
 	$ emacs
 
-step 5: to test it open a new .js file with your emacs:
+Step 6: By default Yasnippet dosent work with JS3-mode but we can simply fix it by:
+
+	$ cd ~/.emacs.d/elpa/yasnippet-     #use tab for auto compelete
+	$ cd snippets/
+	$ cp -r js2-mode/ js3-mode
+
+step 7: to test it open a new .js file with your emacs:
 	
 	type > log
 	press (shit+TAB) and what yasnippet could Do. Great!!!! isnt it?
