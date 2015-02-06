@@ -43,7 +43,7 @@ Step 4: In you project directory Create .tern-project file with format like this
 	  }
 	}
 
-not:see http://ternjs.net/doc/manual.html#configuration for more info
+not:see http://ternjs.net/doc/manual.html#configuration for more info.
 
 Step 5: Now Start Emacs. It will load packages automatically. You could use "emacs --debug-init" if you get any error.
 
