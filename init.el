@@ -33,6 +33,7 @@
 
 (defvar daniel/packages '(ac-js2
 			  ac-slime
+			  angular-snippets
 			  auto-complete
                           autopair
                           coffee-mode
@@ -143,10 +144,10 @@
 (setq default-directory "~/workspace/")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;; yasnippet
+;;; yasnippet and angular-snippets
 ;;; should be loaded before auto complete so that they can work together
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
+(require 'angular-snippets)
 (require 'yasnippet)
 (yas-global-mode t)
 ;; Remove Yasnippet's default tab key binding
