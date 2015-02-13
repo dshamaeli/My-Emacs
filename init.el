@@ -209,6 +209,24 @@
 (ac-flyspell-workaround)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;open file with diffrent program
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(defun prelude-open-with ()
+  "Simple function that allows us to open the underlying
+file of a buffer in an external program."
+  (interactive)
+  (when buffer-file-name
+    (shell-command (concat
+                    (if (eq system-type 'darwin)
+                        "open"
+                      (read-shell-command "Open current file with: "))
+                    " "
+                    buffer-file-name))))
+;;; set key for opening file
+(global-set-key (kbd "C-c o") 'prelude-open-with)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
