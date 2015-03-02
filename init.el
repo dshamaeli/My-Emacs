@@ -180,6 +180,10 @@
 ;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 ;(setq js2-highlight-level 3)
 (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
+'(js3-auto-indent-p t)         ; it's nice for commas to right themselves.
+'(js3-enter-indents-newline t) ; don't need to push tab before typing
+'(js3-indent-on-enter-key t)   ; fix indenting before moving on
+(setq js3-consistent-level-indent-inner-bracket t)
 
 ;;;Webmode
 
