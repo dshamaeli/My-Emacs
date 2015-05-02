@@ -172,6 +172,19 @@
 (ac-set-trigger-key "<tab>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;Competele file path
+;;;http://superuser.com/questions/67170/how-do-i-complete-file-paths-in-emacs
+;;;HippieExpand
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(global-set-key (kbd "C-M-/") 'my-expand-file-name-at-point)
+(defun my-expand-file-name-at-point ()
+  "Use hippie-expand to expand the filename"
+  (interactive)
+  (let ((hippie-expand-try-functions-list '(try-complete-file-name-partially try-complete-file-name)))
+    (call-interactively 'hippie-expand)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;Language Hooks
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
@@ -180,7 +193,7 @@
 ;(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 ;(setq js2-highlight-level 3)
 (add-to-list 'auto-mode-alist '("\\.js$" . js3-mode))
-'(js3-auto-indent-p t)         ; it's nice for commas to right themselves.
+;'(js3-auto-indent-p t)         ; it's nice for commas to right themselves.
 '(js3-enter-indents-newline t) ; don't need to push tab before typing
 '(js3-indent-on-enter-key t)   ; fix indenting before moving on
 (setq js3-consistent-level-indent-inner-bracket t)
@@ -189,11 +202,18 @@
 
 (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.css?\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.ejs?\\'" . web-mode))
 (setq web-mode-markup-indent-offset 2)
 (setq web-mode-css-indent-offset 2)
 (setq web-mode-enable-auto-pairing t)
 (setq web-mode-enable-css-colorization t)
 (add-hook 'web-mode-hook (lambda () (flyspell-mode t)))
+
+;;;TAB
+
+(setq-default indent-tabs-mode nil)
+;; set default tab char's display width to 4 spaces
+(setq-default tab-width 4)
 
 ;;;Tern
 
