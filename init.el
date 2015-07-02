@@ -232,6 +232,14 @@
 ;;;(define-key tern-mode-keymap [(control tab)] 'completion-at-point)
 (ac-flyspell-workaround)
 
+;;;GO-MODE
+(add-to-list 'load-path "/home/daniel/.emacs.d/elpa/go-mode-20150129.313/")
+(require 'go-mode-autoloads)
+(add-to-list 'auto-mode-alist '("\\.go?\\'" . go-mode))
+
+
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;open file with diffrent program
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
