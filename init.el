@@ -43,6 +43,7 @@
                           flycheck
                           gist
                           go-mode
+			  go-snippets 
                           graphviz-dot-mode
                           haml-mode
                           haskell-mode
