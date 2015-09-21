@@ -235,10 +235,13 @@
 
 ;;;GO-MODE
 (add-to-list 'load-path "/home/daniel/.emacs.d/elpa/go-mode-20150129.313/")
+(add-to-list 'load-path "/home/daniel/.emacs.d/gocode/emacs")
 (require 'go-mode-autoloads)
 (add-to-list 'auto-mode-alist '("\\.go?\\'" . go-mode))
-
-
+(add-hook 'before-save-hook 'gofmt-before-save)
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(ac-config-default)
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
