@@ -1,5 +1,4 @@
-;;; -*- lexical-binding: t -*-
-;;; tern-auto-complete.el --- Tern Completion by auto-complete.el
+;;; tern-auto-complete.el --- Tern Completion by auto-complete.el -*- lexical-binding: t -*-
 
 ;; Author:  <m.sakurai at kiwanami.net>
 ;; Version: 0.0.1
@@ -36,6 +35,16 @@
   "[AC] If t, tern enable completion by auto-completion."
   :type 'boolean
   :group 'auto-complete)
+
+(defcustom tern-ac-sync t
+  "[AC] If t, auto-complete will wait for tern canditates before starting.
+This enables tern canditates to integrate automatically in auto-complete without
+the need for a separate keybinding.
+
+Remember to add ac-source-tern-completion to ac-sources."
+  :type 'boolean
+  :group 'auto-complete)
+
 
 (defvar tern-ac-complete-reply nil  "[internal] tern-ac-complete-reply.")
 
@@ -86,9 +95,9 @@
            (name (cdr (assq 'name item))))
        (popup-make-item
         name
-        :symbol (if (string-match "fn" type) "f" "v")
+        :symbol (if (null type) "?" (if (string-match "fn" type) "f" "v"))
         :summary (truncate-string-to-width
-                  type tern-ac-completion-truncate-length 0 nil "...")
+                  (or type "?") tern-ac-completion-truncate-length 0 nil "...")
         :document (concat type "\n\n" doc))))
    tern-ac-complete-reply))
 
@@ -110,6 +119,17 @@
   (if tern-ac-on-dot
       (define-key tern-mode-keymap "." 'tern-ac-dot-complete)
     (define-key tern-mode-keymap "." nil)))
+
+(defvar tern-ac-js-major-modes '(js2-mode js-mode javascript-mode))
+
+(defadvice auto-complete (around add-tern-ac-candidates first activate)
+  "Load tern-js canditates before ac-start."
+  (if (and tern-ac-sync
+           (memq major-mode tern-ac-js-major-modes)
+           (not (or (ac-menu-live-p) (ac-inline-live-p))))
+      (tern-ac-complete-request
+       'auto-complete-1)
+    ad-do-it))
 
 
 (provide 'tern-auto-complete)

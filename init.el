@@ -48,6 +48,7 @@
                           haml-mode
                           haskell-mode
                           htmlize
+			  jade-mode	
 			  js2-mode
 			  js3-mode
 			  json-mode	
@@ -173,6 +174,44 @@
 (ac-set-trigger-key "<tab>")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;npm install -g eslint-config-airbnb eslint
+;;;add `"extends": "airbnb"` to .eslintrc Jason
+;;;https://www.reddit.com/r/emacs/comments/3i8ozd/has_anyone_successfully_hooked_up_flycheckeslint/
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; http://www.flycheck.org/manual/latest/index.html
+;(require 'flycheck)
+
+(add-hook 'js3-mode-hook
+          (defun my-js2-mode-setup ()
+            (flycheck-mode t)
+            (when (executable-find "eslint")
+              (flycheck-select-checker 'javascript-eslint))))
+
+
+;; turn on flychecking globally
+;(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; disable jshint since we prefer eslint checking
+;(setq-default flycheck-disabled-checkers
+;  (append flycheck-disabled-checkers
+;    '(javascript-jshint)))
+
+;; use eslint with web-mode for jsx files
+;(flycheck-add-mode 'javascript-eslint 'web-mode)
+
+;; customize flycheck temp file prefix
+;(setq-default flycheck-temp-prefix ".flycheck")
+
+;; disable json-jsonlist checking for json files
+;(setq-default flycheck-disabled-checkers
+;  (append flycheck-disabled-checkers
+;    '(json-jsonlist)))
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;Competele file path
 ;;;http://superuser.com/questions/67170/how-do-i-complete-file-paths-in-emacs
 ;;;HippieExpand
@@ -188,6 +227,13 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;Language Hooks
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;Jade-mode
+
+;;(require 'sws-mode)
+(require 'jade-mode)
+;;(add-to-list 'auto-mode-alist '("\\.styl\\'" . sws-mode))
+(add-to-list 'auto-mode-alist '("\\.jade\\'" . jade-mode))
 
 ;;;JS-mode
 
@@ -213,15 +259,14 @@
 ;;;TAB
 
 (setq-default indent-tabs-mode nil)
-;; set default tab char's display width to 4 spaces
-(setq-default tab-width 4)
+;; set default tab char's display width to 2 spaces
+(setq-default tab-width 2)
 
 ;;;Tern
 
 
 (add-to-list 'load-path "~/.emacs.d/tern/emacs/")
 (autoload 'tern-mode "tern.el" nil t)
-
 (add-hook 'js3-mode-hook (lambda () (tern-mode t)))
 (add-hook 'js3-mode-hook (lambda () (auto-complete-mode t)))
 (add-hook 'js3-mode-hook (lambda () (flyspell-mode t)))

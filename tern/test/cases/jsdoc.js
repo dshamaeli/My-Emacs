@@ -22,6 +22,21 @@ var abc = function() {
   this; //: Date
 };
 
+/** @this Abc */
+var Abc = function() {
+  this; //: Abc
+};
+
+/** @class */
+var AbcCls = function() {
+  this; //: AbcCls
+};
+
+/** @constructor */
+var AbcCtor = function() {
+  this; //: AbcCtor
+};
+
 /**
  * This is also a function
  * @returns {string}
@@ -61,12 +76,25 @@ takesOpt; //: fn(a?: number)
 
 /** @typedef {Array.<boolean>} Bitset */
 
+/**
+ * @typedef {Object} MyType
+ * @property {boolean} one - Property one
+ * @property {integer} two - And two
+ */
+
 someNonDeclarationStatement();
 
 /** @type {Bitset} */
 var myBitset = getABitset();
 
 myBitset; //: [bool]
+
+/** @type {MyType} */
+var myObj;
+
+myObj.one //: bool
+myObj.two //: number
+({}).one //: ?
 
 function NonAscïį() { this.length = "hi"; }
 
@@ -105,3 +133,10 @@ stringOrNumber; //: string|number
 function unionFunction(a) { return argh(); }
 
 unionFunction; //: fn(a: string) -> [Foo|number]
+
+/**
+ * @returns {string}
+ */
+function ui() {}
+
+ui(); //: string

@@ -2,7 +2,7 @@ If you want to use Emacs to edit your JavaScript files there are some packages w
 
 Installation for Ubuntu 14.04:
 
-Requirements: you should have git,node(0.10.35),tern (should have been installed at "/usr/bin/tern" or you have to configure it manually. more info at http://ternjs.net/doc/manual.html#emacs) and of course Emacs24 ( I use version 24.4.1) installed.
+Requirements: you should have git,node(>=0.10.35),tern (npm  install tern -g) and of course Emacs24 ( I use version 24.4.1) installed.
 
 step 1: if there is a ~/.emacs file in your home directory you should remove it so emacs use ~/.emacs.d/init.el for initiation.
 
@@ -10,7 +10,7 @@ step 2:	first clone this repository to your computer:
 
 	$ git clone https://github.com/dshamaeli/My-Emacs.git ~/.emacs.d
 
-Step 3: now Install ternjs the dependencies:
+Step 3: now Install ternjs dependencies:
 
 	$ cd ~/.emacs.d/tern
 	$ npm install
@@ -22,13 +22,8 @@ Extra step:	do this step only if you have cloned tern from ternjs.net
 to set tern auto complete key map to CTRL-TAB add this line to keymap section in ~/.emacs.d/tern/emacs/tern.el
 	
 		(define-key tern-mode-keymap [(control tab)] 'completion-at-point)
-		  
-you have to do this manually until Mr Marijn Haverbeke (Geat man and Author of Eloquent JavaScript and tern) answers my pull request in github
-	
-
+  
 cautionary Step: Make sure that node is added to your path or tern package wont work 
-
-
 
 Step 4: In you project directory Create .tern-project file with format like this:
 

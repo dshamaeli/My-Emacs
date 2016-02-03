@@ -2,4 +2,6 @@ elpa
 var
 auto-save-list
 ac-comphist.dat
+gocode
 session*
+tern
