@@ -125,7 +125,9 @@ list of strings, giving the binary name and arguments.")
 (defvar tern-buffer-is-dirty nil)
 
 (defun tern-project-relative-file ()
-  (substring (buffer-file-name) (length (tern-project-dir))))
+  (if (buffer-file-name)
+      (substring (buffer-file-name) (length (tern-project-dir)))
+    (buffer-name)))
 
 (defun tern-get-partial-file (at)
   (let* (min-indent start-pos end-pos
@@ -549,8 +551,8 @@ list of strings, giving the binary name and arguments.")
       (tern-send-buffer-to-server))))
 
 (defvar tern-mode-keymap (make-sparse-keymap))
-(define-key tern-mode-keymap [(meta ?.)] 'tern-find-definition)
 (define-key tern-mode-keymap [(control tab)] 'completion-at-point)
+(define-key tern-mode-keymap [(meta ?.)] 'tern-find-definition)
 (define-key tern-mode-keymap [(control meta ?.)] 'tern-find-definition-by-name)
 (define-key tern-mode-keymap [(meta ?,)] 'tern-pop-find-definition)
 (define-key tern-mode-keymap [(control ?c) (control ?r)] 'tern-rename-variable)
